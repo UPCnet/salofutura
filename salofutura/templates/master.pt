@@ -1,0 +1,32 @@
+<metal:page define-macro="master">
+<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html&gt;" />
+<html lang="ca">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title></title>
+        <meta name="description" content="" />
+        <meta name="author" content="UPC" />
+
+        <link rel="shortcut icon" href="${request.application_url}/static/favicon.ico" />
+        <link rel="apple-touch-icon" href="${request.application_url}/static/favicon.ico" />
+        
+        <link rel="stylesheet" href="${request.application_url}/css/jquery.mobile-1.0.1.min.css" />
+        <link type="text/css" href="${request.application_url}/css/salofutura.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="${request.application_url}/js/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="${request.application_url}/js/jquery.mobile-1.0.1.min.js"></script>
+
+    </head>
+
+    <body>
+        <header> </header>
+        <div metal:define-slot="main">
+            The main content
+        </div>
+        <footer> </footer>
+    </body>
+
+</html>
+</metal:page>

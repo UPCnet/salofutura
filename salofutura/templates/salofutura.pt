@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html metal:use-macro="api.masterTemplate.macros['master']">
+<head></head>
+<body>
+    <metal:main fill-slot="main">
+
+	<form id="theform" action="${api.getAppURL()}/salofutura" method="post" data-ajax="false">
+				
+		<div data-role="page" id="main">
+		    <div data-theme="b" data-role="header" class="ui-bar-b ui-header" role="banner">
+		        <h1>UPC - Sal&oacute; Futura 2012</h1>
+		    </div>
+		    <div data-role="content">
+		        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+		            <li class="white-space: none;" tal:repeat="ambit titulacions">
+		                    <a tal:attributes="href string:#id${repeat.ambit.number}" 
+		                       tal:content="ambit.name">Ambit</a>
+		            </li>
+		        </ul>
+		    </div>
+		    <input type="text" name="email" id="email" value="" placeholder="Correu del sol·licitant" />
+		    <input type="submit" name="formFutura.submitted" value="Envia" />
+		</div>
+
+		<tal:pages repeat="ambit titulacions">
+			<div data-role="page" tal:attributes="id string:id${repeat.ambit.number}">
+
+			    <div data-theme="b" data-role="header">
+			    	<a href="${request.application_url}/salofutura/" data-icon="back" data-iconpos="left" data-direction="reverse" class="ui-btn-left jqm-back">Back</a>			       
+			       <h1 tal:content="ambit.name">Titol Ambit</h1>
+			    </div>
+
+				<div data-role="content">
+					<fieldset data-role="controlgroup" data-type="vertical">
+					    <tal:cicle repeat="cicle sorted(ambit.data.keys(), reverse=True)">
+					        <tal:titulacio repeat="titulacio ambit.data[cicle]">
+						        <input type="checkbox"
+						               tal:attributes="name titulacio;
+						                               id titulacio">
+						        </input>
+								<label tal:attributes="for titulacio" tal:content="cicle">Titulacio</label> 
+					        </tal:titulacio>
+					    </tal:cicle>
+				    </fieldset>
+		            <input type="text" name="email" id="email" value="" placeholder="Correu del sol·licitant"/>
+					<input type="submit" name="formFutura.submitted" value="Envia" />
+				</div>	
+			</div>
+
+		</tal:pages>
+
+	</form>
+
+	</metal:main>
+</body>
+</html>
